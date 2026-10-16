@@ -34,15 +34,12 @@ object UnityAdsManager {
     private const val TAG = "ColorBlockUnityAds"
     const val GAME_ID: String = BuildConfig.UNITY_ADS_GAME_ID
     const val REWARDED_PLACEMENT_ID: String = BuildConfig.UNITY_ADS_PLACEMENT_ID
-    const val FALLBACK_PLACEMENT_ID: String = "Rewarded_Android"
 
     // Production Live Ads setting: Test Mode is false for real ad servers
     var forceProductionLiveAds: Boolean = true
     val testMode: Boolean
         get() = BuildConfig.UNITY_ADS_TEST_MODE && !forceProductionLiveAds
 
-    // Currently active/ready placement ID
-    private var activePlacementId: String = REWARDED_PLACEMENT_ID
     private var currentAdObjectId: String? = null
 
     enum class SdkStatus {
@@ -145,10 +142,8 @@ object UnityAdsManager {
                     override fun onInitializationComplete() {
                         _sdkStatus.value = SdkStatus.INITIALIZED
                         _lastStatusMessage.value = if (!currentTestMode) "Unity Ads Live Service connected" else "Unity Ads initialized"
-                        Log.i(TAG, "Unity Ads initialization complete. Pre-loading rewarded ad for live service.")
+                        Log.i(TAG, "Unity Ads initialization complete. SDK connected and ready.")
                         onComplete?.invoke(true)
-                        // Pre-buffer rewarded ad
-                        loadRewardedAd(context.applicationContext)
                     }
 
                     override fun onInitializationFailed(
@@ -171,7 +166,7 @@ object UnityAdsManager {
     }
 
     /**
-     * Load the Rewarded Ad placement BP_Rewarded_Android (with fallback to Rewarded_Android).
+     * Load the Rewarded Ad placement BP_Rewarded_Android.
      */
     fun loadRewardedAd(context: Context, onResult: ((Boolean, String?) -> Unit)? = null) {
         if (_sdkStatus.value != SdkStatus.INITIALIZED) {
@@ -183,13 +178,13 @@ object UnityAdsManager {
         }
 
         if (_adLoadStatus.value == AdLoadStatus.LOADING) {
-            Log.d(TAG, "Ad load request already in progress for placement: $activePlacementId")
+            Log.d(TAG, "Ad load request already in progress for placement: $REWARDED_PLACEMENT_ID")
             return
         }
 
         _adLoadStatus.value = AdLoadStatus.LOADING
         _lastStatusMessage.value = "Loading rewarded ad..."
-        Log.d(TAG, "Loading rewarded ad for placement: $activePlacementId")
+        Log.d(TAG, "Loading rewarded ad for placement: $REWARDED_PLACEMENT_ID")
 
         val generatedObjectId = UUID.randomUUID().toString()
         currentAdObjectId = generatedObjectId
@@ -200,16 +195,17 @@ object UnityAdsManager {
 
         try {
             UnityAds.load(
-                activePlacementId,
+                REWARDED_PLACEMENT_ID,
                 loadOptions,
                 object : IUnityAdsLoadListener {
                     override fun onUnityAdsAdLoaded(placementId: String) {
-                        activePlacementId = placementId
-                        _adLoadStatus.value = AdLoadStatus.READY
-                        _isAdReady.value = true
-                        _lastStatusMessage.value = "Rewarded ad ready ($placementId)"
-                        Log.i(TAG, "Rewarded ad loaded successfully for placement: $placementId with objectId: $generatedObjectId")
-                        onResult?.invoke(true, null)
+                        if (placementId == REWARDED_PLACEMENT_ID) {
+                            _adLoadStatus.value = AdLoadStatus.READY
+                            _isAdReady.value = true
+                            _lastStatusMessage.value = "Rewarded ad ready ($placementId)"
+                            Log.i(TAG, "Rewarded ad loaded successfully for placement: $placementId with objectId: $generatedObjectId")
+                            onResult?.invoke(true, null)
+                        }
                     }
 
                     override fun onUnityAdsFailedToLoad(
@@ -217,20 +213,10 @@ object UnityAdsManager {
                         error: UnityAds.UnityAdsLoadError,
                         message: String
                     ) {
-                        Log.w(TAG, "Failed to load ad for $placementId: $error - $message")
-                        // If BP_Rewarded_Android failed (e.g. requires header bidding markup from mediation partner),
-                        // try the standard waterfall rewarded placement
-                        if (placementId == REWARDED_PLACEMENT_ID && activePlacementId != FALLBACK_PLACEMENT_ID) {
-                            Log.i(TAG, "Attempting fallback to standard placement: $FALLBACK_PLACEMENT_ID")
-                            activePlacementId = FALLBACK_PLACEMENT_ID
-                            _adLoadStatus.value = AdLoadStatus.IDLE
-                            loadRewardedAd(context, onResult)
-                            return
-                        }
-
                         _adLoadStatus.value = AdLoadStatus.FAILED
                         _isAdReady.value = false
                         _lastStatusMessage.value = "Failed to load ad: $message"
+                        Log.w(TAG, "Unity Ads load callback for $placementId: $error - $message")
                         onResult?.invoke(false, message)
                     }
                 }
@@ -277,7 +263,7 @@ object UnityAdsManager {
         // Check ad readiness
         if (!_isAdReady.value) {
             isShowingAd.set(false)
-            val msg = "Rewarded ad is loading. Please tap again in a moment."
+            val msg = "Rewarded ad is currently loading or unavailable. Please try again in a moment."
             _lastStatusMessage.value = msg
             loadRewardedAd(activity.applicationContext)
             onAdFailed(msg)
@@ -287,7 +273,7 @@ object UnityAdsManager {
         val sessionId = UUID.randomUUID().toString()
         activeSessionId = sessionId
         _lastStatusMessage.value = "Showing rewarded ad..."
-        Log.i(TAG, "Showing rewarded ad for placement: $activePlacementId (Session: $sessionId)")
+        Log.i(TAG, "Showing rewarded ad for placement: $REWARDED_PLACEMENT_ID (Session: $sessionId)")
 
         val showOptions = UnityAdsShowOptions().apply {
             currentAdObjectId?.let { objectId = it }
@@ -296,7 +282,7 @@ object UnityAdsManager {
         try {
             UnityAds.show(
                 activity,
-                activePlacementId,
+                REWARDED_PLACEMENT_ID,
                 showOptions,
                 object : IUnityAdsShowListener {
                     override fun onUnityAdsShowStart(placementId: String) {
