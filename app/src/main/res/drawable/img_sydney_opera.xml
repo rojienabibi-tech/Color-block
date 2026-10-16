@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="80dp"
+    android:viewportWidth="120"
+    android:viewportHeight="80">
+    <!-- Harbor Sky & Water -->
+    <path
+        android:fillColor="#1E3A8A"
+        android:pathData="M0,0 L120,0 L120,80 L0,80 Z" />
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M0,52 L120,52 L120,80 L0,80 Z" />
+    <!-- Harbor Platform Base -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M15,48 L105,48 L100,54 L20,54 Z" />
+    <!-- Opera Shell 1 (Large left) -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M25,48 C30,22 46,18 55,48 Z" />
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M38,48 C43,26 50,22 55,48 Z" />
+    <!-- Opera Shell 2 (Center) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48,48 C55,25 70,22 78,48 Z" />
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M60,48 C65,28 73,24 78,48 Z" />
+    <!-- Opera Shell 3 (Right) -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M72,48 C78,32 90,30 96,48 Z" />
+    <!-- Sun / Glow in sky -->
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M100,18 A8,8 0 1,1 100,17.9 Z" />
+</vector>

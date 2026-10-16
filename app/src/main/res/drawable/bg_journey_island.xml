@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="820dp"
+    android:viewportWidth="400"
+    android:viewportHeight="820">
+    <!-- Deep oceanic water background -->
+    <path
+        android:fillColor="#0A192F"
+        android:pathData="M0,0 L400,0 L400,820 L0,820 Z" />
+
+    <!-- Stylized Tropical Archipelago Islands along S-Curve -->
+    <!-- Island 1 (bottom right) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M220,680 Q320,640 370,720 Q390,790 310,810 Q210,810 200,750 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M240,690 Q310,660 350,720 Q360,770 300,790 Q220,790 220,740 Z" />
+
+    <!-- Island 2 (bottom left) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M50,580 Q160,540 180,630 Q170,710 80,720 Q20,710 30,640 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M65,600 Q140,560 160,630 Q150,690 85,700 Q40,690 45,640 Z" />
+
+    <!-- Island 3 (middle right) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M230,420 Q340,390 380,470 Q370,550 290,560 Q210,540 210,470 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M250,440 Q320,410 350,470 Q340,530 280,540 Q230,520 230,470 Z" />
+
+    <!-- Island 4 (middle left) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M40,280 Q150,250 170,330 Q160,410 80,420 Q10,400 20,330 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M55,300 Q130,270 150,330 Q140,390 85,400 Q30,380 35,330 Z" />
+
+    <!-- Island 5 (top right) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M240,110 Q350,80 380,160 Q370,240 280,250 Q210,230 220,160 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M255,130 Q330,100 355,160 Q340,220 275,230 Q225,210 235,160 Z" />
+
+    <!-- Island 6 (top left) -->
+    <path
+        android:fillColor="#065F46"
+        android:pathData="M30,10 Q140,0 160,70 Q150,150 70,160 Q10,140 10,70 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M45,25 Q125,15 140,70 Q130,130 75,140 Q25,125 25,70 Z" />
+
+    <!-- Sparkling water details -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M180,200 L185,202 L180,204 L175,202 Z M230,350 L235,352 L230,354 L225,352 Z M170,500 L175,502 L170,504 L165,502 Z M220,640 L225,642 L220,644 L215,642 Z" />
+</vector>

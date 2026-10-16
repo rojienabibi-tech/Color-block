@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <!-- Background rounded square with deep purple gradient feel -->
+    <path
+        android:fillColor="#1E1B4B"
+        android:pathData="M24,0 L176,0 A24,24 0 0,1 200,24 L200,176 A24,24 0 0,1 176,200 L24,200 A24,24 0 0,1 0,176 L0,24 A24,24 0 0,1 24,0 Z" />
+    
+    <!-- 4 Vibrant 3D Puzzle Blocks -->
+    <!-- Yellow block (top-left) -->
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M32,32 L92,32 A8,8 0 0,1 100,40 L100,92 A8,8 0 0,1 92,100 L32,100 A8,8 0 0,1 24,92 L24,40 A8,8 0 0,1 32,32 Z" />
+    <path
+        android:fillColor="#FEF08A"
+        android:pathData="M32,32 L92,32 A8,8 0 0,1 100,40 L100,50 L24,50 L24,40 A8,8 0 0,1 32,32 Z" />
+    <path
+        android:fillColor="#CA8A04"
+        android:pathData="M24,90 L100,90 L100,92 A8,8 0 0,1 92,100 L32,100 A8,8 0 0,1 24,92 Z" />
+
+    <!-- Red block (top-right) -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M108,32 L168,32 A8,8 0 0,1 176,40 L176,92 A8,8 0 0,1 168,100 L108,100 A8,8 0 0,1 100,92 L100,40 A8,8 0 0,1 108,32 Z" />
+    <path
+        android:fillColor="#FCA5A5"
+        android:pathData="M108,32 L168,32 A8,8 0 0,1 176,40 L176,50 L100,50 L100,40 A8,8 0 0,1 108,32 Z" />
+    <path
+        android:fillColor="#B91C1C"
+        android:pathData="M100,90 L176,90 L176,92 A8,8 0 0,1 168,100 L108,100 A8,8 0 0,1 100,92 Z" />
+
+    <!-- Cyan block (bottom-left) -->
+    <path
+        android:fillColor="#06B6D4"
+        android:pathData="M32,108 L92,108 A8,8 0 0,1 100,116 L100,168 A8,8 0 0,1 92,176 L32,176 A8,8 0 0,1 24,168 L24,116 A8,8 0 0,1 32,108 Z" />
+    <path
+        android:fillColor="#67E8F9"
+        android:pathData="M32,108 L92,108 A8,8 0 0,1 100,116 L100,126 L24,126 L24,116 A8,8 0 0,1 32,108 Z" />
+    <path
+        android:fillColor="#0E7490"
+        android:pathData="M24,166 L100,166 L100,168 A8,8 0 0,1 92,176 L32,176 A8,8 0 0,1 24,168 Z" />
+
+    <!-- Green block (bottom-right) -->
+    <path
+        android:fillColor="#22C55E"
+        android:pathData="M108,108 L168,108 A8,8 0 0,1 176,116 L176,168 A8,8 0 0,1 168,176 L108,176 A8,8 0 0,1 100,168 L100,116 A8,8 0 0,1 108,108 Z" />
+    <path
+        android:fillColor="#86EFAC"
+        android:pathData="M108,108 L168,108 A8,8 0 0,1 176,116 L176,126 L100,126 L100,116 A8,8 0 0,1 108,108 Z" />
+    <path
+        android:fillColor="#15803D"
+        android:pathData="M100,166 L176,166 L176,168 A8,8 0 0,1 168,176 L108,176 A8,8 0 0,1 100,168 Z" />
+
+    <!-- Center gleaming golden star -->
+    <path
+        android:fillColor="#FDE047"
+        android:pathData="M100,82 L104,94 L117,94 L107,102 L111,114 L100,106 L89,114 L93,102 L83,94 L96,94 Z" />
+</vector>

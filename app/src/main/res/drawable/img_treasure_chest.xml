@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Glow Background -->
+    <path
+        android:fillColor="#451A03"
+        android:pathData="M15,15 L105,15 A15,15 0 0,1 120,30 L120,90 A15,15 0 0,1 105,105 L15,105 A15,15 0 0,1 0,90 L0,30 A15,15 0 0,1 15,15 Z" />
+
+    <!-- Chest Base (Wooden Body) -->
+    <path
+        android:fillColor="#92400E"
+        android:pathData="M20,55 L100,55 L95,95 L25,95 Z" />
+    <!-- Chest Lid (Open Arch with Golden Edge) -->
+    <path
+        android:fillColor="#B45309"
+        android:pathData="M20,55 C20,32 100,32 100,55 Z" />
+    <!-- Golden Straps and Trims -->
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M18,52 L102,52 L102,58 L18,58 Z" />
+    <path
+        android:fillColor="#FDE047"
+        android:pathData="M34,38 L42,38 L40,95 L32,95 Z" />
+    <path
+        android:fillColor="#FDE047"
+        android:pathData="M78,38 L86,38 L88,95 L80,95 Z" />
+    <!-- Golden Lock Keyhole -->
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M54,52 L66,52 L66,68 L54,68 Z" />
+    <path
+        android:fillColor="#78350F"
+        android:pathData="M60,56 A3,3 0 1,1 60,55.9 Z M59,58 L61,58 L62,64 L58,64 Z" />
+    <!-- Sparkling Diamonds / Gems overflowing from lid -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M50,42 L56,34 L64,42 L56,48 Z" />
+    <path
+        android:fillColor="#67E8F9"
+        android:pathData="M38,46 L44,38 L50,46 L44,51 Z" />
+    <path
+        android:fillColor="#F43F5E"
+        android:pathData="M70,44 L76,36 L82,44 L76,50 Z" />
+</vector>
